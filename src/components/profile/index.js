@@ -4,7 +4,7 @@ import useAxios from "../../app/hooks/useAxios"
 
 const Profile = () => {
     const location = useLocation()
-    const { data } = useAxios(`/users/${location.state?._id}`)
+    const { data } = useAxios(`/users/${location.state?.id}`)
     return(
         <div>
             <Typography variant="h3">{data?.user?.firstName}</Typography>

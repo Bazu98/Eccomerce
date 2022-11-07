@@ -1,12 +1,12 @@
 import { Divider, Typography } from '@mui/material'
 import React from 'react'
 
-const CartItem = ({ CartItem }) => {
+const CartItem = ({ cartItem }) => {
   return (
     <div>
-        <Typography>{CartItem.product?.name}</Typography>
-        <Typography>{CartItem.product?.price}</Typography>
-        <Typography>{CartItem.quantity}</Typography>
+        <Typography>{cartItem.product?.name}</Typography>
+        <Typography>{cartItem.product?.price}</Typography>
+        <Typography>{cartItem.quantity}</Typography>
         <Divider />
     </div>
   )

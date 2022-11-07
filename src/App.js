@@ -32,7 +32,7 @@ function App() {
         <Route path='/products/categories/:categoryName' element={<CategoryProduct />}/>
         <Route path='/products/categories/:categoryName/:productName' element={<SingleProductPage />}/>
         <Route path='/products/new' element={<ProtectedRoute hasAccess={isAdmin}><ProductFormPage /></ProtectedRoute>}/>
-        <Route path='/products/id/edit' element={<ProductFormPage/>}/>
+        <Route path='/products/:id/edit' element={<ProductFormPage/>}/>
       </Routes>
       </Layout>
           </CartContextProvider>

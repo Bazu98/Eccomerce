@@ -29,13 +29,13 @@ const ProductCard = ({product}) => {
   const onEditHandler =(e, product) => {
     e.preventDefault();
     setSelectedProduct(product)
-    navigate(`/products/${product._id}edit`)
+    navigate(`/products/${product._id}/edit`)
   }
   return (
     <Card>
         <CardContent>
             <img  src={product.image} width='100' height='100'/>
-            <Link to = {`/products/categories/${product.category}/${product.name}`} state={{id: product._id, category: product.category}}>
+            <Link to = {`/products/categories/${product.category}/${product.name}`} state={{id: product.id, category: product.category}}>
                 <Typography>{product.name}</Typography>
             </Link>
             <Typography>

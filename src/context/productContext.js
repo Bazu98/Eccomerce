@@ -18,7 +18,7 @@ export const ProductContextProvider = ({ children }) => {
         
     }
     return  (
-        <ProductContext.Provider value={{ mainPageLoading, mainPageProducts, getData, saveProduct, selectedProduct,setSelectedProduct}}>
+        <ProductContext.Provider value={{ mainPageLoading, mainPageProducts, getData, saveProduct, selectedProduct,setSelectedProduct }}>
             {children}
         </ProductContext.Provider>
     )

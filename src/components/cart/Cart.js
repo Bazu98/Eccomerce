@@ -8,8 +8,10 @@ import CartItem from './CartItem';
 const Cart = () => {
     const { cartState, saveTocart } = useContext(cartContext);
     const { userData } = useContext(userContext);
+    //console.log('ha', userData)
   return (
     <div>{cartState.cart?.length > 0 ? cartState.cart?.map((cartItem) => {
+      //console.log('cart item', cartItem)
         return <CartItem  key={cartItem.product._id} cartItem={cartItem}/>
     }): <Typography>Empty Cart</Typography>}
     

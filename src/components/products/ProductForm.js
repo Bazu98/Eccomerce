@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import useForm from '../../app/hooks/useForm'
 import FileBase from 'react-file-base64';
 import { ProductContext } from '../../context/productContext'
+import { useNavigate } from 'react-router-dom';
 
 const generateAddProductFormValues = (selectedProduct) =>{
     return {
@@ -40,6 +41,7 @@ const generateAddProductFormValues = (selectedProduct) =>{
 }
 
 const ProductForm = () => {
+    const navigate = useNavigate();
     const { formValues: producFormValues, onInputChange, setFormValues } = useForm({defaultFormValues: generateAddProductFormValues()})
     const [image,setImage]= useState("")
     const { saveProduct, selectedProduct } = useContext(ProductContext)
@@ -50,6 +52,7 @@ const ProductForm = () => {
         const brand = producFormValues.brand.value
         const price = producFormValues.price.value
         saveProduct( { name,description,category,brand,price })
+        navigate('/')
     }
     useEffect(() => {
         setFormValues(generateAddProductFormValues(selectedProduct))
@@ -60,7 +63,7 @@ const ProductForm = () => {
         name='name'
         value={producFormValues.name.value}
         onChange={onInputChange}
-        error={producFormValues.name.error}
+        error={!!producFormValues.name.error}
         helperText={producFormValues.name.error}
         label={"name"}
         margin={"dense"}
@@ -69,7 +72,7 @@ const ProductForm = () => {
         name='description'
         value={producFormValues.description.value}
         onChange={onInputChange}
-        error={producFormValues.description.error}
+        error={!!producFormValues.description.error}
         helperText={producFormValues.description.error}
         label={"description"}
         margin={"dense"}
@@ -78,7 +81,7 @@ const ProductForm = () => {
         name='category'
         value={producFormValues.category.value}
         onChange={onInputChange}
-        error={producFormValues.category.error}
+        error={!!producFormValues.category.error}
         helperText={producFormValues.category.error}
         label={"category"}
         margin={'dense'}
@@ -87,7 +90,7 @@ const ProductForm = () => {
         name='brand'
         value={producFormValues.brand.value}
         onChange={onInputChange}
-        error={producFormValues.brand.error}
+        error={!!producFormValues.brand.error}
         helperText={producFormValues.brand.error}
         label={"brand"}
         margin={'dense'}
@@ -96,7 +99,7 @@ const ProductForm = () => {
         name='price'
         value={producFormValues.price.value}
         onChange={onInputChange}
-        error={producFormValues.price.error}
+        error={!!producFormValues.price.error}
         helperText={producFormValues.price.error}
         label={"price"}
         margin={'dense'}

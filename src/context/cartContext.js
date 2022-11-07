@@ -15,11 +15,13 @@ const cartReducer = (state,action) => {
             const item = state.cart?.find((item) => item.product?._id ===productId);
             let newCart;
             if(item){
-                newCart = state.cart.map((cartItem) => cartItem.product._id === productId ? {...cartItem,quantity: cartItem.quantity + 1} : cartItem)
+                newCart = state.cart.map((cartItem) => cartItem.product._id === productId ? 
+                {...cartItem,quantity: cartItem.quantity + 1} : cartItem)
             }else{
                 newCart = [...state.cart,{ product: {...newItem}, quantity: 1}]
             }
             localStorage.setItem("cart", JSON.stringify(newCart))
+            //console.log("new cart", newCart);
             return {cart: newCart};
         case REMOVE_FROM_CART:
             const selectedProductId = action.payload
@@ -50,12 +52,13 @@ export const CartContextProvider = ({children}) => {
 
     const saveTocart = async(userId) => {
         try {
-            await instance.put(`/users/${userId}/cart`, {product: cartState.cart})
+            await instance.put(`/users/${userId}/cart`, {products: cartState.cart})
             localStorage.removeItem("cart")
         } catch (error) {
             
         }
     }
+    //console.log('cart state', cartState)
     useEffect(() => {
         const user = getUser()
         if(user){
@@ -65,7 +68,7 @@ export const CartContextProvider = ({children}) => {
             }
             getUserCart()
         }else{
-            const cart = JSON.parse[localStorage.getItem('cart')] || []
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
             dispatch({type: POPULATE_CART, payload: cart})
         }
     },[])

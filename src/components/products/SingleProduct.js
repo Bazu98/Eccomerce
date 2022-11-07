@@ -10,7 +10,6 @@ const SingleProduct = () => {
     if(loading){
         return <Loading />
     }
-
   return (
     <div>
         {data.product && (
